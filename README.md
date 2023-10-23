@@ -173,7 +173,9 @@ printf("parent:pid=%d\n",getpid());
 return  0;
 }
 ```
-实验结果：![1.14](https://github.com/duxiaozhod/os1/blob/main/1.14.png)
+实验结果：
+>![1.14](https://github.com/duxiaozhod/os1/blob/main/1.14.png)
+>
 解释：从结果可以简单看出调用execvp（）函数打印出的system_call的pid值与子进程的pid值一致，而调用system（）打印出的system_call的pid值与子进程的pid值不一致，为子进程pid值加1.所以使用execvp（）是在当前进程中调用exe文件并更换程序映像，而使用system（）是创建一个新进程，在新进程中运行调用的exe文件。
 ## 1.2 线程
 ### 1.21 创建线程
@@ -541,5 +543,5 @@ return  0;
 结果：>![1.3](https://github.com/duxiaozhod/os1/blob/main/1.3.png)
 >
 解释：我们通过自己定义spinlock_t实现了自旋锁，在spinlock_t中有一个整形变量flag，当flag为1时表示资源被占用进行上锁。我们创建了两个线程，在两个线程中分别利用锁的机制来实现进程同步，当线程1需要对公共变量shared_value进行修改时就先进行加锁将lock的flag置为1，防止线程2同时进行以实现同步。当线程完成任务后便将lock的flag置为0进行释放锁。锁释放后线程2便可以进行。
-[github仓库](https://github.com/duxiaozhod/os1)
+>[github仓库](https://github.com/duxiaozhod/os1)
 
